@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
 {
+    public bool restart;
 
     public bool gameHasEnded = false;
     public GameObject levelCompleteUI;
@@ -32,10 +33,12 @@ public class GameManagerScript : MonoBehaviour
             gameHasEnded = true;
             
             levelEndUI.SetActive(true);
-            //Invoke("Restart", restartDelay);
+            //
             /* Ending Scripts animation play and scene transition */
+            if(restart) Invoke("Restart", restartDelay);
+            else Invoke("Success", restartDelay);
 
-            Invoke("Success", restartDelay);
+
 
         }
     }
